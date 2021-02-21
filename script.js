@@ -229,6 +229,7 @@ class App {
   _renderWorkout(workout) {
     let html = `
       <li class="workout workout--${workout.type}" data-id="${workout.id}">
+       
         <h2 class="workout__title">${workout.description}</h2>
         <div class="workout__details">
           <span class="workout__icon">${
@@ -321,5 +322,22 @@ class App {
     location.reload();
   }
 }
+
+document.querySelector('.delete').addEventListener('click', function (e) {
+  // console.log(e.target);
+  if (e.target === document.querySelector('.delete')) {
+    // localStorage.clear();
+    document.querySelectorAll('.workout').forEach(function (item) {
+      item.style.display = 'none';
+    });
+
+    document.querySelectorAll('.leaflet-popup').forEach(item => {
+      item.style.display = 'none';
+    });
+    document.querySelectorAll('.leaflet-pane > img').forEach(item => {
+      item.style.display = 'none';
+    });
+  }
+});
 
 const app = new App();
